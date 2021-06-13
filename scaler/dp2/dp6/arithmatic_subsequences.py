@@ -8,13 +8,17 @@ class Solution:
     def is_subsequence_recursive(self, A, i, subsequence):
         if i == len(A):
             if len(subsequence) >= 3:
+                print(subsequence)
                 if tuple(subsequence) not in self.hash:
-                    print(subsequence)
+
                     self.count += 1
                     self.hash[tuple(subsequence)] = 1
                 return
             else:
                 return
+
+        if len(subsequence) >= 3:
+            print(subsequence)
 
         if len(subsequence) >= 3 and tuple(subsequence) not in self.hash:
             print(subsequence)

@@ -70,6 +70,9 @@ class Solution:
             else:
                 dp[i][j] = 0
 
+        for row in dp:
+            print(row)
+
         for i in range(1, m + 1):
             for j in range(1, n + 1):
                 if pattern[i - 1] == '*':
@@ -97,7 +100,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    a = 'aaaaaaa'
-    b = 'a***********'
+    a = 'aa'
+    b = 'a***'
     obj = Solution()
     ans = obj.solve(a, b)
