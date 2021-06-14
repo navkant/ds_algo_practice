@@ -42,7 +42,6 @@ class Solution:
                 if pattern[j - 1] == '*':
                     dp[i][j] = dp[i][j - 1] or dp[i - 1][j]
 
-
         for row in dp:
             print(row)
         return dp[-1][-1]
@@ -54,7 +53,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    a = 'aa'
-    b = 'a***'
+    a = ''
+    b = '*****'
     obj = Solution()
     obj.isMatch(a, b)

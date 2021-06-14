@@ -100,7 +100,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    a = 'aa'
-    b = 'a***'
+    a = ''
+    b = '*****'
     obj = Solution()
     ans = obj.solve(a, b)
