@@ -58,6 +58,6 @@ class Soltuion:
 
 
 if __name__ == '__main__':
-    a = 'bebeeed'
+    a = "leetcode"
     obj = Soltuion()
     obj.solve(a)

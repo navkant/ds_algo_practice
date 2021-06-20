@@ -17,8 +17,7 @@ class Solution:
         i = len(dp) - 1
         j = len(dp[0]) - 1
         ans = ''
-        print(f'i: {i} | j: {j}')
-        print('**********************')
+
         while i > 0 and j > 0:
             print(f'i: {i} | j: {j}')
             if str1[i-1] == str2[j-1]:
@@ -32,7 +31,6 @@ class Solution:
                 else:
                     ans = ans + str2[j-1]
                     j -= 1
-        print(f'i: {i} | j: {j}')
         if i >= 1:
             ans = ans + str1[:i][::-1]
         elif j >= 1:

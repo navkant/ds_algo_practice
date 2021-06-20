@@ -56,7 +56,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    a = "bebdeeedaddecebbbbbabebedc"
+    a = "bananas"
     obj = Solution()
     ans = obj.minCut(a)
     print(f'ans is {ans}')
