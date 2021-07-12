@@ -14,25 +14,45 @@ class Solution:
         else:
             return False
 
-    def rec_func(self, arr, idx, ans):
+    # def rec_func(self, arr, idx, ans):
+    #     if idx == len(arr):
+    #         ans.append(1)
+    #         return
+    #
+    #     for i in range(idx, len(arr)):
+    #         if i != idx and arr[idx] == arr[i]:
+    #             continue
+    #         arr2 = arr.copy()
+    #         arr2[i], arr2[idx] = arr2[idx], arr2[i]
+    #
+    #         if idx == 0 or (idx > 0 and self.is_sqr(arr2[idx] + arr2[idx - 1])):
+    #             self.rec_func(arr2, idx + 1, ans)
+    def rec_func(self, arr, idx, ans, r):
         if idx == len(arr):
-            ans.append(1)
+            prev_length = len(r)
+            r.add(tuple(arr))
+            new_length = len(r)
+            if new_length > prev_length:
+                ans.append(1)
             return
 
         for i in range(idx, len(arr)):
             if i != idx and arr[idx] == arr[i]:
+                if self.is_sqr(arr2[idx] + arr2[idx-1]):
+                    self.rec_func(arr2, idx+1, ans, r)
                 continue
+
             arr2 = arr.copy()
             arr2[i], arr2[idx] = arr2[idx], arr2[i]
-
-            if idx == 0 or (idx > 0 and self.is_sqr(arr2[idx] + arr2[idx - 1])):
-                self.rec_func(arr2, idx + 1, ans)
+            if idx == 0 or (idx > 0 and self.is_sqr(arr2[idx] + arr2[idx-1])):
+                self.rec_func(arr2, idx+1, ans, r)
 
     def solve(self, A):
         if len(A) == 1:
             return 0
         a = list()
-        self.rec_func(A, 0, a)
+        res = set()
+        self.rec_func(A, 0, a, res)
         # print(a)
         return sum(a)
 

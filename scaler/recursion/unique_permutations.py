@@ -5,32 +5,46 @@ class Solution:
     def __init__(self):
         pass
 
-    def rec_func(self, A, output, ans):
-        if len(A) == 0:
-            if output not in ans:
-                ans.append(output)
+    def rec_permute(self, array, result, subarray):
+        if len(array) == 0:
+            if subarray not in result:
+                result.append(subarray)
+            else:
+                pass
             return
 
-        for i in range(len(A)):
-            first_element = A[i]
-            B = []
+        for i in range(len(array)):
+            first_element = array[i]
+            b = []
             for j in range(i):
-                B.append(A[j])
-            for j in range(i+1, len(A)):
-                B.append(A[j])
+                b.append(array[j])
+            for j in range(i+1, len(array)):
+                b.append(array[j])
+            self.rec_permute(b, result, subarray + [first_element])
 
-            # print(f'A : {A} B: {B} output: {output}')
-            self.rec_func(B, output + [first_element], ans)
+    def generatePerms(self, arr, currentPerm, allPerms, usedInds):
+        if len(currentPerm) == len(arr):
+            # allPerms.append(currentPerm)
+            allPerms.append([num for num in currentPerm])
+
+        usedVals = set()
+        for i in range(len(arr)):
+            if i not in usedInds and not arr[i] in usedVals:  # second check to avoid duplicates
+                usedVals.add(arr[i])
+                usedInds.add(i)
+                currentPerm.append(arr[i])
+                self.generatePerms(arr, currentPerm, allPerms, usedInds)
+                usedInds.remove(i)
+                currentPerm.pop()
 
     def permute(self, A):
-        n = len(A)
-        ans = []
-        self.rec_func(A, [], ans)
-        return ans
+        all_perm = []
+        self.generatePerms(A, [], all_perm, set())
+        print(all_perm)
 
 
 if __name__ == '__main__':
-    a = [1, 2, 3, 4, 5, 6, 7, 8 ]
+    a = [1, 1, 2]
     obj = Solution()
     ans = obj.permute(a)
     print(f'ans is {ans}')
